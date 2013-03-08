@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<h1>必要の無いページなので戻ってください</h1>
+
+<p>
+  <b>Prob:</b>
+  <%= @state.prob_id %>
+</p>
+
+<p>
+  <b>Compo:</b>
+  <%= @state.compo %>
+</p>
+
+<p>
+  <b>Ans:</b>
+  <%= @state.ans %>
+</p>
+
+
+<%= link_to 'Edit', edit_state_path(@state) %> |
+<%= link_to 'Back', states_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>タイトル:</b>
+  <%= @prob.title %>
+</p>
+
+<p>
+  <% @states.each_with_index do |state, index| %>
+	  <b>選択肢<%= (index + 1) %>:</b>
+  	<%= state.compo %>
+  	<br />
+  <% end %>
+</p>
+
+<p>
+  <b>画像url:</b>
+  <% if @prob.url != "" %>
+  	<%= @prob.url %>
+  <% else %>
+  	画像はありません
+  <% end %>
+</p>
+
+<p>
+  <b>作成者:</b>
+  <%= @prob.auther %>
+</p>
+<%= link_to '戻る', probs_path%>

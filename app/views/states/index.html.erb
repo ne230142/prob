@@ -1,0 +1,28 @@
+<h1>Listing states</h1>
+<h1>必要の無いページなので戻ってください</h1>
+
+<table>
+  <tr>
+    <th>Prob</th>
+    <th>Compo</th>
+    <th>Ans</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @states.each do |state| %>
+  <tr>
+    <td><%= state.prob_id %></td>
+    <td><%= state.compo %></td>
+    <td><%= state.ans %></td>
+    <td><%= link_to 'Show', state %></td>
+    <td><%= link_to 'Edit', edit_state_path(state) %></td>
+    <td><%= link_to 'Destroy', state, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New State', new_state_path %>

@@ -1,0 +1,56 @@
+<% @probs.each_with_index do |prob, index|%>
+	<h2>問題<%= index + 1 %></h2>
+	<h4><%= prob.title %></h3>
+	<% if prob.url != "" %>
+		<%= image_tag(prob.url)%>
+	<% end %>
+	<% @states.each do |state|%>
+			<%state.sort_by{rand}.each do |s|%>
+				<% if s.prob_id == prob.id %>
+					<p><input type="radio" name="q<%= index + 1 %>" value="<%= s.ans %>"><%= s.compo %></p>
+				<% end %>
+			<% end %>
+	<% end %>
+	<br />
+
+<% end %>
+<input type="button" value="採点する" onclick="check();" />
+<br />
+<script>
+
+
+
+
+var array = new Array(<%= @probs.size %>);
+for(var x = 0;x < array.length; x++) {
+	array[x] = false;
+}
+function check() {
+	var c = 0;
+	for(var i = 0;i < array.length;i++) {
+		var e = document.getElementsByName('q' + (i + 1));
+
+		for(var j = 0;j < e.length;j++) {
+			if(e[j].checked && e[j].value == 0){
+				array[i] = true;
+				c++;
+			}
+		}
+
+	}
+	strArray = new Array(array.length);
+	for(var y = 0;y < strArray.length;y++) {
+		if(array[y]) {
+			strArray[y] = '問題' + (y + 1) + ':正解';
+		} else {
+			strArray[y] = '問題' + (y + 1) + ':不正解';
+		}
+	}
+	str = strArray.join('\n');
+
+	alert(str + '\n正答率:' + Math.round(c / array.length * 100) + '%');
+
+
+}
+
+</script>

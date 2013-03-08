@@ -1,0 +1,33 @@
+<%= form_for(@prob) do |f| %>
+  <% if @prob.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@prob.errors.count, "error") %> prohibited this prob from being saved:</h2>
+
+      <ul>
+      <% @prob.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label '出題文' %>:問題文を入力してください。<br />
+    <%= f.text_area :title %>
+  </div>
+  <div class="field">
+    <%= f.label '選択肢' %>:選択肢を入力してください。<br />
+    <%= f.text_area :state %>
+  </div>
+  <div class="field">
+    <%= f.label '画像url' %>:画像のurlを入力してください(必要ない場合は何も入力しないでください)。<br />
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label '作成者' %>:この問題の作成者の名前を入力してください。<br />
+    <%= f.text_field :auther %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

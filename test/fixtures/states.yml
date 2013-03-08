@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  prob_id: 1
+  compo: MyString
+  ans: 1
+
+two:
+  prob_id: 1
+  compo: MyString
+  ans: 1

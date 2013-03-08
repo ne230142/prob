@@ -1,0 +1,45 @@
+<h1>問題一覧</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th>タイトル</th>
+    <th>作成者</th>
+    <th>作成日時</th>
+  </tr>
+
+<form action="<%=exam_probs_path%>" method="get">
+<% @probs.reverse.each do |prob| %>
+  <tr>
+    <!-- <td><input type="checkbox" name="id" value="<%= prob.id %>"/></td> -->
+    <td><%= check_box "question", prob.id %></td>
+    <td>
+      <% if prob.title.length > 15 %>
+        <%= prob.title[0..14] + '...' %>
+      <% else %>
+        <%= prob.title %>
+      <% end %>
+    </td>
+    <td>
+      <% if prob.auther.length > 8 %>
+        <%= prob.auther[0..7] + '...' %>
+      <% else %>
+        <%= prob.auther %>
+      <% end %>
+    </td>
+    <td><%= prob.created_at.strftime("%Y/%m/%d(#{@wdays[prob.created_at.wday]}) %H:%M:%S") %></td>
+    <td><%= link_to '詳細', prob %></td>
+    <td><%= link_to '削除', prob, method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } %></td>
+  </tr>
+<% end %>
+
+<input type="submit" value="選択した問題を解く">
+
+</form>
+
+</table>
+
+<br />
+
+
+<%= button_to "新しく問題を作成する", :action => "new" %> <br />

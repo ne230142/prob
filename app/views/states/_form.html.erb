@@ -1,0 +1,29 @@
+<%= form_for(@state) do |f| %>
+  <% if @state.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@state.errors.count, "error") %> prohibited this state from being saved:</h2>
+
+      <ul>
+      <% @state.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :prob_id %><br />
+    <%= f.number_field :prob_id %>
+  </div>
+  <div class="field">
+    <%= f.label :compo %><br />
+    <%= f.text_field :compo %>
+  </div>
+  <div class="field">
+    <%= f.label :ans %><br />
+    <%= f.number_field :ans %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
