@@ -61,17 +61,17 @@
 
     <div class="container">
         <div class="row">
-          <div class="span3">
+          <div class="span2">
             <div class="well sidebar-nav">
               <h3>メニュー</h3>
-              <ul class="nav nav-list">
+              <ul class="nav nav-pills">
                 <li><%= link_to "問題一覧へ", root_path %></li>
-                <li><%= link_to "新しく問題を作成する", new_prob_path  %></li>
+                <li><%= link_to "問題の作成", new_prob_path  %></li>
                 <!--<li><%= link_to "Link3", "/path3"  %></li>-->
               </ul>
             </div><!--/.well -->
           </div><!--/span-->
-          <div class="span9">
+          <div class="span10">
             <%= bootstrap_flash %>
             <%= yield %>
           </div>

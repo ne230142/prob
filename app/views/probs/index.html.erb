@@ -1,11 +1,13 @@
 <h1>問題一覧</h1>
 
-<table>
+<table class="table table-striped">
   <tr>
     <th></th>
     <th>タイトル</th>
     <th>作成者</th>
     <th>作成日時</th>
+    <th></th>
+    <th></th>
   </tr>
 
 <form action="<%=exam_probs_path%>" method="get">
@@ -28,18 +30,18 @@
       <% end %>
     </td>
     <td><%= prob.created_at.strftime("%Y/%m/%d(#{@wdays[prob.created_at.wday]}) %H:%M:%S") %></td>
-    <td><%= link_to '詳細', prob %></td>
-    <td><%= link_to '削除', prob, method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } %></td>
+    <td><%= link_to '詳細', prob, :class => "btn" %></td>
+    <td><%= link_to '削除', prob, method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, :class => "btn" %></td>
   </tr>
 <% end %>
 
-<input type="submit" value="選択した問題を解く">
+<p><input type="submit" class="btn btn-primary" value="選択した問題を解く"></p>
 
 </form>
+<%= button_to "新しく問題を作成する", { :action => "new" }, :class => "btn" %> <br />
 
 </table>
 
 <br />
 
 
-<%= button_to "新しく問題を作成する", :action => "new" %> <br />

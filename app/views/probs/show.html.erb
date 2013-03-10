@@ -7,18 +7,25 @@
 
 <p>
   <% @states.each_with_index do |state, index| %>
+    <% if state.ans == 0 %>
+      <span class="label label-success">CA</span>
+    <% else %>
+      <span class="label label-warning">WA</span>
+    <% end %>
+
 	  <b>選択肢<%= (index + 1) %>:</b>
   	<%= state.compo %>
-  	<br />
+
+   	<br />
   <% end %>
 </p>
 
 <p>
-  <b>画像url:</b>
+  <b>画像:</b>
   <% if @prob.url != "" %>
-  	<%= @prob.url %>
+    <%= image_tag(@prob.url)%>
   <% else %>
-  	画像はありません
+      <span class="label">no image</span>
   <% end %>
 </p>
 
