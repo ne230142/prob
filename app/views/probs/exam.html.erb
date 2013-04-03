@@ -1,21 +1,26 @@
-<% @probs.each_with_index do |prob, index|%>
-	<h2>問題<%= index + 1 %></h2>
-	<h4><%= prob.title %></h3>
-	<% if prob.url != "" %>
-		<%= image_tag(prob.url)%>
-	<% end %>
-	<% @states.each do |state|%>
-			<%state.sort_by{rand}.each do |s|%>
-				<% if s.prob_id == prob.id %>
-					<p><input type="radio" name="q<%= index + 1 %>" value="<%= s.ans %>"><%= s.compo %></p>
+<% if @probs == [] %>
+	<h2>問題が選択されていません</h2>
+	<h3>一つ以上の問題を選択してください。</h3>
+	<%= link_to '戻る', probs_path, :class => "btn" %>
+<% else %>
+	<% @probs.each_with_index do |prob, index|%>
+		<h2>問題<%= index + 1 %></h2>
+		<h4><%= prob.title %></h3>
+		<% if prob.url != "" %>
+			<%= image_tag(prob.url)%>
+		<% end %>
+		<% @states.each do |state|%>
+				<%state.sort_by{rand}.each do |s|%>
+					<% if s.prob_id == prob.id %>
+						<p><input type="radio" name="q<%= index + 1 %>" value="<%= s.ans %>"><%= s.compo %></p>
+					<% end %>
 				<% end %>
-			<% end %>
+		<% end %>
+		<br />
 	<% end %>
+	<input type="button" class="btn btn-primary" value="採点する" onclick="check();" />
 	<br />
-
 <% end %>
-<input type="button" class="btn btn-primary" value="採点する" onclick="check();" />
-<br />
 <script>
 
 
